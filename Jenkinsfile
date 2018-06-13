@@ -3,9 +3,7 @@ volumes += secretVolume(secretName: 'alex-jenkins-dev-ibm-jen', mountPath: '/msb
 print "volumes: ${volumes}" 
 podTemplate(name: 'alex-build', label: 'alex-build',
     containers: [
-        containerTemplate(name: 'docker', image: 'ibmcom/docker:17.10', ttyEnabled: true, command: 'cat'),
-        containerTemplate(name: 'nodejs', image: 'node', ttyEnabled: true, command: 'cat'),
-        containerTemplate(name: 'kubectl', image: 'ibmcom/k8s-kubectl:v1.8.3', ttyEnabled: true, command: 'cat')
+        containerTemplate(name: 'nodejs', image: 'node', ttyEnabled: true, command: 'cat')
     ],
     volumes: volumes
 ) 
