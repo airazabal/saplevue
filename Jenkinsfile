@@ -1,5 +1,5 @@
 def volumes = [ hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock') ]
-volumes += secretVolume(secretName: 'microclimate-icp-secret', mountPath: '/msb_reg_sec')
+volumes += secretVolume(secretName: 'alex-jenkins-dev-ibm-jen', mountPath: '/msb_reg_sec')
 podTemplate(label: 'icp-build', 
     containers: [
         containerTemplate(name: 'docker', image: 'ibmcom/docker:17.10', ttyEnabled: true, command: 'cat'),
