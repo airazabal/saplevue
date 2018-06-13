@@ -24,6 +24,7 @@ podTemplate(label: 'icp-build', inheritFrom: 'default', cloud: 'default',
         }
         stage ('build') {
           container('nodejs') {
+            echo "inside node"
             sh '''
             cd src
             npm -g install grunt-cli karma bower
