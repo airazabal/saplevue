@@ -1,7 +1,7 @@
 def volumes = [ hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock') ]
 volumes += secretVolume(secretName: 'alex-jenkins-dev-ibm-jen', mountPath: '/msb_reg_sec')
 print "volumes: ${volumes}" 
-podTemplate(name: 'icp-build', label: 'icp-build', inheritFrom: 'default', cloud: 'default',
+podTemplate(name: 'alex-build', label: 'alex-build', inheritFrom: 'default', cloud: 'default',
     containers: [
         containerTemplate(name: 'docker', image: 'ibmcom/docker:17.10', ttyEnabled: true, command: 'cat'),
         containerTemplate(name: 'nodejs', image: 'node', ttyEnabled: true, command: 'cat'),
@@ -10,7 +10,7 @@ podTemplate(name: 'icp-build', label: 'icp-build', inheritFrom: 'default', cloud
     volumes: volumes
 ) 
 {
-    node ('icp-build') {
+    node ('alex-build') {
         def gitCommit
         stage ('Extract') {
           checkout scm
