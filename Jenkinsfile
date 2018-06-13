@@ -1,4 +1,4 @@
-podTemplate(label: 'icp-build', 
+podTemplate(label: 'icp-build', inheritFrom: 'default',
     containers: [
         containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat'),
         containerTemplate(name: 'nodejs', image: 'node', ttyEnabled: true, command: 'cat')
