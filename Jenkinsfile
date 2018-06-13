@@ -35,7 +35,7 @@ podTemplate(label: 'icp-build',
           container('docker') {
             echo "starting the run stage"
             sh """
-            docker run -it -p 8080:8080 --rm --name dockerize-vuejs-app vuejs/dockerize-vuejs-app
+            docker run  -p 8080:8080 --rm --name dockerize-vuejs-app vuejs/dockerize-vuejs-app
             """
            }
         }
