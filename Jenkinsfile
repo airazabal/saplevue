@@ -16,13 +16,7 @@ podTemplate(label: 'icp-build',
           gitCommit = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
           echo "checked out git commit ${gitCommit}"
         }
-       stage ('build') {
-          container('nodejs') {
-            sh '''
-            npm install
-            '''
-          }
-        }
+
         stage ('docker') { 
           container('docker') {
             def imageTag = "mycluster.icp:8500/vuejs/dockerize-vuejs-app:${gitCommit}"
@@ -30,6 +24,9 @@ podTemplate(label: 'icp-build',
             sh """
             docker build -t vuejs/dockerize-vuejs-app .
             docker tag vuejs/dockerize-vuejs-app ${imageTag}
+            ln -s /msb_reg_sec/.dockercfg /home/jenkins/.dockercfg
+            mkdir /home/jenkins/.docker
+            ln -s /msb_reg_sec/.dockerconfigjson /home/jenkins/.docker/config.json
             docker push $imageTag
             """
           }
