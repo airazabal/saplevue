@@ -16,11 +16,7 @@ podTemplate(label: 'icp-build', inheritFrom: 'default', cloud: 'default',
           checkout scm
           gitCommit = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
           echo "checked out git commit ${gitCommit}"
-          sh '''
-          cd src
-          rm -rf bin
-          rm -rf build
-          '''
+          
         }
         stage ('build') {
           container('nodejs') {
