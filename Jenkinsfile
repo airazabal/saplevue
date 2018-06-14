@@ -23,6 +23,8 @@ podTemplate(label: 'icp-build',
             cat package.json
             ls -la
             npm -g install
+            npm install
+            ls -la 
             npm run build
             '''
           }
