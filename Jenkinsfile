@@ -25,10 +25,8 @@ podTemplate(label: 'icp-build',
             docker build -t vuejs/dockerize-vuejs-app .
             docker tag vuejs/dockerize-vuejs-app ${imageTag}
             ln -s /msb_reg_sec/.dockercfg /home/jenkins/.dockercfg
-            cat /msb_reg_sec/.dockercfg
             mkdir /home/jenkins/.docker
             ln -s /msb_reg_sec/.dockerconfigjson /home/jenkins/.docker/config.json
-            cat /home/jenkins/.docker/config.json
             docker push $imageTag
             """
           }
