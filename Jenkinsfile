@@ -20,9 +20,9 @@ podTemplate(label: 'icp-build',
           container('nodejs') {
             sh '''
             npm install
-            ls -la 
             npm run build
             '''
+            echo "build completed..."
           }
         }
 
