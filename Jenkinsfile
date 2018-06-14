@@ -3,8 +3,7 @@ volumes += secretVolume(secretName: 'microclimate-registry-secret', mountPath: '
 podTemplate(label: 'icp-build', 
     containers: [
         containerTemplate(name: 'docker', image: 'ibmcom/docker:17.10', ttyEnabled: true, command: 'cat'),
-        containerTemplate(name: 'nodejs', image: 'node', ttyEnabled: true, command: 'cat'),
-        containerTemplate(name: 'kubectl', image: 'ibmcom/k8s-kubectl:v1.8.3', ttyEnabled: true, command: 'cat')
+        containerTemplate(name: 'nodejs', image: 'node', ttyEnabled: true, command: 'cat')
     ],
     volumes: volumes
 ) 
