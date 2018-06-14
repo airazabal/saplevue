@@ -20,9 +20,6 @@ podTemplate(label: 'icp-build',
         stage ('build') {
           container('nodejs') {
             sh '''
-            cat package.json
-            ls -la
-            npm -g install
             npm install
             ls -la 
             npm run build
@@ -35,6 +32,7 @@ podTemplate(label: 'icp-build',
             def imageTag = "mycluster.icp:8500/vuejs/dockerize-vuejs-app:${gitCommit}"
             echo "imageTag ${imageTag}"
             sh """
+            ls -la
             docker build -t vuejs/dockerize-vuejs-app .
             docker tag vuejs/dockerize-vuejs-app ${imageTag}
             ln -s /msb_reg_sec/.dockercfg /home/jenkins/.dockercfg
